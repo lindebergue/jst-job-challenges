@@ -34,3 +34,6 @@ hospedado em uma instância do [Parse](https://parseplatform.org/) hospedada
 na AWS (`https://xx9p7hp1p7.execute-api.us-east-1.amazonaws.com/`), com ID `unAFkcaNDeXajurGB7LChj8SgQYS2ptm`. Como estamos usando uma API
 não exatamente pública (mas que deveria ser), essas informações podem
 parar de funcionar sem aviso prévio.
+- Para os mapas geográficos, foram utilizados dados da API de malhas
+(https://servicodados.ibge.gov.br/api/docs/malhas) e localidades
+(https://servicodados.ibge.gov.br/api/docs/localidades) do IBGE.
