@@ -1,0 +1,210 @@
+---
+parser: "@typescript-eslint/parser"
+
+parserOptions:
+  ecmaVersion: 2018
+  sourceType: module
+  ecmaFeatures:
+    jsx: true
+    experimentalObjectRestSpread: true
+
+env:
+  browser: true
+  es6: true
+  node: true
+
+plugins:
+  - react
+  - react-hooks
+  - import
+  - "@typescript-eslint/eslint-plugin"
+
+extends:
+  - eslint:recommended
+  - plugin:react/recommended
+  - plugin:import/recommended
+  - plugin:import/react
+  - plugin:import/typescript
+  - plugin:@typescript-eslint/eslint-recommended
+
+settings:
+  react:
+    version: detect
+
+rules:
+  array-bracket-spacing:
+    - warn
+    - never
+  arrow-parens:
+    - warn
+    - always
+  arrow-spacing:
+    - warn
+    - before: true
+      after: true
+  brace-style:
+    - error
+    - 1tbs
+  comma-dangle:
+    - warn
+    - never
+  comma-spacing:
+    - warn
+    - before: false
+      after: true
+  comma-style:
+    - error
+    - last
+  constructor-super: error
+  eol-last: warn
+  func-call-spacing:
+    - warn
+    - never
+  generator-star-spacing:
+    - warn
+    - before
+  indent:
+    - warn
+    - 2
+    - SwitchCase: 1
+  jsx-quotes:
+    - warn
+    - prefer-single
+  key-spacing:
+    - warn
+    - beforeColon: false
+      afterColon: true
+  keyword-spacing:
+    - error
+    - after: true
+  linebreak-style:
+    - error
+    - unix
+  max-nested-callbacks:
+    - warn
+    - 3
+  new-cap: warn
+  no-console: warn
+  no-mixed-spaces-and-tabs: error
+  no-multiple-empty-lines:
+    - warn
+    - max: 1
+  no-this-before-super: error
+  no-useless-call: warn
+  no-useless-computed-key: warn
+  no-useless-concat: warn
+  no-useless-constructor: warn
+  no-useless-escape: warn
+  no-useless-return: warn
+  no-unused-vars: off
+  no-var: warn
+  no-warning-comments: warn
+  object-curly-spacing:
+    - warn
+    - always
+  padded-blocks:
+    - warn
+    - never
+  prefer-arrow-callback: warn
+  prefer-const: warn
+  prefer-reflect: warn
+  quotes:
+    - warn
+    - single
+  quote-props:
+    - warn
+    - as-needed
+  rest-spread-spacing:
+    - warn
+    - never
+  require-yield: error
+  semi: off
+  space-before-function-paren:
+    - warn
+    - asyncArrow: always
+      named: never
+      anonymous: always
+  space-in-parens:
+    - warn
+    - never
+  space-infix-ops: warn
+  space-unary-ops: warn
+  template-curly-spacing: warn
+  unicode-bom:
+    - error
+    - never
+  yield-star-spacing:
+    - warn
+    - after
+  react/jsx-equals-spacing:
+    - warn
+    - never
+  react/jsx-first-prop-new-line:
+    - warn
+    - multiline
+  react/jsx-indent:
+    - warn
+    - 2
+  react/jsx-key: error
+  react/jsx-no-comment-textnodes: error
+  react/jsx-no-target-blank: warn
+  react/jsx-pascal-case: error
+  react/jsx-tag-spacing:
+    - warn
+    - beforeSelfClosing: always
+      closingSlash: never
+      afterOpening: allow-multiline
+  react/jsx-boolean-value:
+    - warn
+    - never
+  react/jsx-closing-tag-location: warn
+  react/jsx-closing-bracket-location: warn
+  react/jsx-props-no-multi-spaces: warn
+  react/jsx-wrap-multilines:
+    - warn
+    - declaration: parens-new-line
+      assignment: parens-new-line
+      return: parens-new-line
+      arrow: parens-new-line
+      condition: ignore
+      logical: parens
+      prop: ignore
+  react/no-did-mount-set-state: error
+  react/no-did-update-set-state: error
+  react/no-string-refs: error
+  react/no-unescaped-entities: error
+  react/prefer-stateless-function: warn
+  react/prop-types: off
+  react/void-dom-elements-no-children: error
+  react-hooks/rules-of-hooks: error
+  import/default: error
+  import/export: error
+  import/first: error
+  import/named: error
+  import/namespace: error
+  import/no-duplicates: error
+  import/no-dynamic-require: error
+  import/no-named-as-default: warn
+  import/no-named-as-default-member: warn
+  import/no-unresolved: error
+  import/no-webpack-loader-syntax: error
+  import/order:
+    - warn
+    - groups:
+      - builtin
+      - external
+      - parent
+      - internal
+      newlines-between: always
+  "@typescript-eslint/semi":
+    - error
+    - never
+  "@typescript-eslint/member-delimiter-style":
+    - error
+    - multiline:
+        delimiter: none
+        requireLast: false
+      singleline:
+        delimiter: comma
+        requireLast: false
+  "@typescript-eslint/no-unused-vars": error

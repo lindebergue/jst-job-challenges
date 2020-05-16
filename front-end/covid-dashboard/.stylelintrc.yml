@@ -1,0 +1,14 @@
+extends: stylelint-config-recommended-scss
+rules:
+  color-hex-case: lower
+  color-hex-length: short
+  indentation: 2
+  length-zero-no-unit: true
+  max-empty-lines: 1
+  no-eol-whitespace: true
+  no-missing-end-of-source-newline: true
+  number-leading-zero: never
+  number-no-trailing-zeros: true
+  property-case: lower
+  string-quotes: single
+  unit-case: lower
