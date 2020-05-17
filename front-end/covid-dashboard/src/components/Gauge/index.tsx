@@ -10,17 +10,22 @@ export interface GaugeProps {
   name: string
   value?: number
   format?: GaugeFormat
+  color?: string
 }
 
 export const Gauge: React.FunctionComponent<GaugeProps> = ({
   name,
   value,
-  format = 'number'
+  format = 'number',
+  color
 }) => {
   return (
     <div className={styles.gauge}>
       {value ? (
         <div className={styles.value}>
+          {color && (
+            <div className={styles.color} style={{ backgroundColor: color }} />
+          )}
           {formatValue(value, format)}
         </div>
       ) : (
