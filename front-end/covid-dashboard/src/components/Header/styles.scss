@@ -1,11 +1,16 @@
 @import '../../lib/variables';
+@import '../../lib/breakpoints';
 
 .header {
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem;
+  padding: 1.5rem;
+
+  @include breakpoint('>=tablet') {
+    padding: 2rem;
+  }
 }
 
 .title,
