@@ -13,6 +13,10 @@ const config = {
   module: {
     rules: [
       {
+        test: /\.worker\.ts$/,
+        use: 'worker-loader'
+      },
+      {
         test: /\.tsx?$/,
         use: 'ts-loader',
         include: path.resolve(__dirname, './src')
