@@ -1,0 +1,18 @@
+@import '../../lib/variables';
+
+.header {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+}
+
+.title,
+.lastUpdatedAt {
+  margin: 0;
+}
+
+.lastUpdatedAt {
+  color: $secondary-text-color;
+}

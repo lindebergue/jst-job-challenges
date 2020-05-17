@@ -1,0 +1,11 @@
+@import '../../lib/variables';
+
+.footer {
+  font-size: .8em;
+  color: $secondary-text-color;
+  padding: 2rem;
+
+  a {
+    border-bottom: 1px solid $secondary-text-color;
+  }
+}

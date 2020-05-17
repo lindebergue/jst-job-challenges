@@ -1,0 +1,17 @@
+@import '../../lib/variables';
+
+.grid {
+  display: grid;
+  grid-gap: 2rem;
+  padding: 2rem;
+  width: 100vw;
+}
+
+.gridCell {
+  align-self: stretch;
+  justify-self: stretch;
+  border: 1px solid $line-color;
+  border-radius: 4px;
+  background: $lower-layer-color;
+  padding: 1rem;
+}

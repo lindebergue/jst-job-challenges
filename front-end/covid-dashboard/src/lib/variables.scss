@@ -1,8 +1,10 @@
-$background-color: #f4f2f6;
-$text-color: #141414;
+$background-color: #201e22;
+$text-color: #e2dfdf;
 
-$loader-background-color: #000;
-$loader-text-color: #fff;
+$secondary-text-color: mix($background-color, $text-color, 50%);
+$line-color: mix($background-color, $text-color, 97.5%);
+$upper-layer-color: mix($background-color, $text-color, 85%);
+$lower-layer-color: mix($background-color, $text-color, 95%);
 
 $body-font: 'Inter';
 $title-font: 'Inter';

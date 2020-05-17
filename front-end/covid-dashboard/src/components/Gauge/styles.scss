@@ -1,0 +1,11 @@
+@import '../../lib/variables';
+
+.value {
+  font-size: 2em;
+  margin-bottom: .5rem;
+}
+
+.name {
+  margin: 0;
+  color: $secondary-text-color;
+}
