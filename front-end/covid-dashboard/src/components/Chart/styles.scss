@@ -7,3 +7,23 @@
 .title {
   margin: 0 0 1.5rem;
 }
+
+/* stylelint-disable */
+:global {
+  .vega-embed,
+  .vega-embed::after,
+  .vega-embed::before {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+  }
+
+  .vega-embed {
+    width: 100%;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+}
+/* stylelint-enable */

@@ -8,7 +8,7 @@ import styles from './styles.scss'
 export interface ChartProps {
   title: string
   spec: object
-  data?: { [key: string]: unknown }
+  data?: { [key: string]: any }
 }
 
 export const Chart: React.FunctionComponent<ChartProps> = ({
@@ -17,6 +17,25 @@ export const Chart: React.FunctionComponent<ChartProps> = ({
   data
 }) => {
   const ref = React.useRef<HTMLDivElement>(null)
+  const [width, setWidth] = React.useState(0)
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      const rect = ref.current?.getBoundingClientRect()
+      if (!rect) {
+        return
+      }
+      setWidth(rect.width)
+    }
+
+    // set the chart size right away
+    handleResize()
+
+    window.addEventListener('resize', handleResize)
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
 
   return (
     <div ref={ref} className={styles.chart}>
@@ -25,12 +44,36 @@ export const Chart: React.FunctionComponent<ChartProps> = ({
       </h3>
       {data ? (
         <VegaLite
+          renderer='svg'
           spec={{
             ...spec,
+            width,
             height: 400,
-            autosize: 'fit'
+            autosize: {
+              type: 'fit',
+              contains: 'padding'
+            }
           }}
           data={data}
+          config={{
+            autosize: 'fit-x',
+            background: '#2a282b',
+            padding: 24,
+            style: {
+              'guide-label': { font: 'Inter', fontSize: 16, fill: '#fff' },
+              'guide-title': { font: 'Inter', fontSize: 16, fill: '#fff' }
+            },
+            axis: {
+              domainColor: '#fff',
+              gridColor: '#5f606b',
+              tickColor: '#fff'
+            },
+            legend: {
+              layout: {
+                anchor: 'middle'
+              }
+            }
+          }}
           actions={false}
         />
       ) : (

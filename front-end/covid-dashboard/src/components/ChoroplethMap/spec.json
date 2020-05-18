@@ -1,0 +1,72 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "data": [
+    {
+      "name": "values",
+      "values": [
+      ]
+    },
+    {
+      "name": "topoJSON",
+      "values": {
+      },
+      "format": {"type": "topojson", "feature": "foo"},
+      "transform": [
+        {
+          "type": "lookup",
+          "from": "values",
+          "key": "topoJSONId",
+          "fields": ["properties.codarea"],
+          "values": ["value"]
+        },
+        {
+          "type": "filter",
+          "expr": "isValid(datum[\"value\"]) && isFinite(+datum[\"value\"])"
+        }
+      ]
+    }
+  ],
+  "projections": [
+    {
+      "name": "projection",
+      "size": {"signal": "[width, height]"},
+      "fit": {"signal": "data('topoJSON')"}
+    }
+  ],
+  "marks": [
+    {
+      "name": "marks",
+      "type": "shape",
+      "style": ["geoshape"],
+      "from": {"data": "topoJSON"},
+      "encode": {
+        "update": {
+          "enter": {"tooltip": {"signal": "datum.value"}},
+          "fill": {"scale": "color", "field": "value"},
+          "ariaRoleDescription": {"value": "geoshape"},
+          "description": {
+            "signal": "\"value\" + \": \" + (format(datum[\"value\"], \"\"))"
+          }
+        }
+      },
+      "transform": [{"type": "geoshape", "projection": "projection"}]
+    }
+  ],
+  "scales": [
+    {
+      "name": "color",
+      "type": "quantize",
+      "domain": {"data": "values", "field": "value"},
+      "range": "heatmap",
+      "interpolate": "hcl"
+    }
+  ],
+  "legends": [
+    {
+      "fill": "color",
+      "gradientLength": {"signal": "clamp(height, 64, 200)"},
+      "symbolType": "circle",
+      "title": "Casos"
+    }
+  ]
+}

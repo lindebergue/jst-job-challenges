@@ -1,0 +1,29 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "mark": "bar",
+  "data": {
+    "name": "values"
+  },
+  "encoding": {
+    "x": {
+      "field": "date",
+      "type": "ordinal",
+      "axis": {"title": ""}
+    },
+    "y": {
+      "aggregate": "sum",
+      "field": "value",
+      "type": "quantitative",
+      "axis": {"title": ""}
+    },
+    "color": {
+      "field": "type",
+      "type": "nominal",
+      "scale": {
+        "domain": ["confirmed", "recovered", "dead"],
+        "range": ["#2470b6", "#42a834", "#69357e"]
+      },
+      "legend": null
+    }
+  }
+}
