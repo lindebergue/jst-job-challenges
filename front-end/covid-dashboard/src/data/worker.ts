@@ -79,7 +79,6 @@ async function populateDatabase(): Promise<void> {
       date: parse(stat.data, 'yyyy-MM-dd', new Date()),
       confirmed: stat.casosAcumulado ? parseInt(stat.casosAcumulado) : 0,
       deaths: stat.obitosAcumulado ? parseInt(stat.obitosAcumulado) : 0,
-      recovered: stat.Recuperadosnovos ? parseInt(stat.Recuperadosnovos) : 0,
       population: stat.populacaoTCU2019 ? parseInt(stat.populacaoTCU2019) : 0
     })
   }
@@ -112,9 +111,9 @@ async function getLocationStats(id: string): Promise<WorkerResult> {
     location,
     cases: {
       confirmed: lastStat.confirmed,
-      recovered: lastStat.recovered,
       deaths: lastStat.deaths,
-      lethality: (lastStat.population * lastStat.confirmed) / 100_000
+      spread: lastStat.population > 0 ? (lastStat.confirmed / lastStat.population) * 100_000 : 0,
+      lethality: lastStat.population > 0 ? (lastStat.deaths / lastStat.population) * 100_000 : 0
     },
     casesTimeSeries: Object.values(groupBy(stats, 'date'))
       .map((stats) => pickMax(stats, 'confirmed'))
@@ -122,7 +121,6 @@ async function getLocationStats(id: string): Promise<WorkerResult> {
         (timeSeries: any, stat) => {
           return timeSeries.concat([
             { date: stat.date, value: stat.confirmed, type: 'confirmed' },
-            { date: stat.date, value: stat.recovered, type: 'recovered' },
             { date: stat.date, value: stat.deaths, type: 'dead' }
           ])
         },

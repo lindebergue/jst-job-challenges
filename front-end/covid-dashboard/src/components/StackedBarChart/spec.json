@@ -20,8 +20,8 @@
       "field": "type",
       "type": "nominal",
       "scale": {
-        "domain": ["confirmed", "recovered", "dead"],
-        "range": ["#2470b6", "#42a834", "#69357e"]
+        "domain": ["confirmed", "dead"],
+        "range": ["#2470b6", "#69357e"]
       },
       "legend": null
     }

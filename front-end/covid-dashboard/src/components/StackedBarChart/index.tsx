@@ -8,7 +8,7 @@ export interface StackedBarChartProps {
   title: string
   values?: {
     date: Date
-    type: 'confirmed' | 'recovered' | 'dead'
+    type: 'confirmed' | 'dead'
     value: number
   }[]
 }

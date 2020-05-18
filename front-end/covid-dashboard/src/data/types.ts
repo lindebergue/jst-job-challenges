@@ -51,14 +51,14 @@ interface OverviewData {
   error: boolean
   cases?: {
     confirmed: number
-    recovered: number
     deaths: number
+    spread: number
     lethality: number
   }
   casesTimeSeries?: {
     date: Date
     value: number
-    type: 'confirmed' | 'recovered' | 'dead'
+    type: 'confirmed' | 'dead'
   }[]
   mapTopoJSONData?: object
   mapValues?: {

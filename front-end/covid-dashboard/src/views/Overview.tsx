@@ -9,7 +9,7 @@ import { useMobileBreakpoint } from '../lib/useMobileBreakpoint'
 import { StackedBarChart } from '../components/StackedBarChart'
 import { ChoroplethMap } from '../components/ChoroplethMap'
 import { State } from '../data/types'
-import { recoveredColor, deathsColor, confirmedColor } from '../lib/legendColors'
+import { deathsColor, confirmedColor } from '../lib/legendColors'
 
 export const Overview: React.FunctionComponent = () => {
   const isMobile = useMobileBreakpoint()
@@ -31,23 +31,21 @@ export const Overview: React.FunctionComponent = () => {
         </GridCell>
         <GridCell row={1} column={isMobile ? '4 / 7' : 2}>
           <Gauge
-            name='Recuperados'
-            value={overview.cases?.recovered}
-            color={recoveredColor}
-          />
-        </GridCell>
-        <GridCell row={2} column={isMobile ? '1 / 4' : 1}>
-          <Gauge
             name='Óbitos'
             value={overview.cases?.deaths}
             color={deathsColor}
           />
         </GridCell>
+        <GridCell row={2} column={isMobile ? '1 / 4' : 1}>
+          <Gauge
+            name='Incidência (100 mil/ha)'
+            value={overview.cases?.spread}
+          />
+        </GridCell>
         <GridCell row={2} column={isMobile ? '4 / 7' : 2}>
           <Gauge
-            name='Letalidade'
+            name='Letalidade (100 mil/ha)'
             value={overview.cases?.lethality}
-            format='percent'
           />
         </GridCell>
         <GridCell row={isMobile ? 3 : '1 / 3'} column={isMobile ? '1 / 7' : '3 / 7'}>
