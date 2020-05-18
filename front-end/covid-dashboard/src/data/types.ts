@@ -62,8 +62,7 @@ interface OverviewData {
   }[]
   mapTopoJSONData?: object
   mapValues?: {
-    locationId: string
-    locationName: string
+    topoJSONId: string
     value: number
   }[]
   updatedAt?: Date

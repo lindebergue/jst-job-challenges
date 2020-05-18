@@ -11,13 +11,14 @@ export interface Location {
   geometry?: object
 }
 
-interface LocationStats {
+export interface LocationStats {
   locationId: string
   topoJSONId: string
   date: Date
   confirmed: number
   deaths: number
   recovered: number
+  population: number
 }
 
 class DashboardDatabase extends Dexie {
@@ -30,7 +31,7 @@ class DashboardDatabase extends Dexie {
     this.version(1).stores({
       datasetInfo: '++',
       location: 'id',
-      locationStats: '++'
+      locationStats: '++, locationId'
     })
   }
 }
