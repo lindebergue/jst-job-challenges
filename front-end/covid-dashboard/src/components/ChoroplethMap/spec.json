@@ -58,7 +58,8 @@
       "type": "quantize",
       "domain": {"data": "values", "field": "value"},
       "range": "heatmap",
-      "interpolate": "hcl"
+      "interpolate": "hcl",
+      "nice": true
     }
   ],
   "legends": [

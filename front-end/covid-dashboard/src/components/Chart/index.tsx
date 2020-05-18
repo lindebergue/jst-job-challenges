@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { VegaLite } from 'react-vega'
+import { Vega } from 'react-vega'
 
 import { Shimmer } from '../Shimmer'
 
@@ -43,7 +43,7 @@ export const Chart: React.FunctionComponent<ChartProps> = ({
         {title}
       </h3>
       {data ? (
-        <VegaLite
+        <Vega
           renderer='svg'
           spec={{
             ...spec,
@@ -74,7 +74,7 @@ export const Chart: React.FunctionComponent<ChartProps> = ({
               }
             }
           }}
-          actions={false}
+          // actions={false}
         />
       ) : (
         <Shimmer

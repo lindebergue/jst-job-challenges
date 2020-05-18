@@ -1,29 +1,65 @@
 {
-  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-  "mark": "bar",
-  "data": {
-    "name": "values"
-  },
-  "encoding": {
-    "x": {
-      "field": "date",
-      "type": "ordinal",
-      "axis": {"title": ""}
-    },
-    "y": {
-      "aggregate": "sum",
-      "field": "value",
-      "type": "quantitative",
-      "axis": {"title": ""}
-    },
-    "color": {
-      "field": "type",
-      "type": "nominal",
-      "scale": {
-        "domain": ["confirmed", "dead"],
-        "range": ["#2470b6", "#69357e"]
-      },
-      "legend": null
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "data": [
+    {
+      "name": "values",
+      "values": [],
+      "transform": [
+        {
+          "type": "stack",
+          "groupby": ["date"],
+          "sort": {"field": "date"},
+          "field": "value"
+        }
+      ]
     }
-  }
+  ],
+  "scales": [
+    {
+      "name": "x",
+      "type": "band",
+      "range": "width",
+      "domain": {"data": "values", "field": "date"}
+    },
+    {
+      "name": "y",
+      "type": "linear",
+      "range": "height",
+      "nice": true, "zero": true,
+      "domain": {"data": "values", "field": "y0"}
+    },
+    {
+      "name": "color",
+      "type": "ordinal",
+      "range": "category",
+      "domain": {"data": "values", "field": "type"}
+    }
+  ],
+  "axes": [
+    {
+      "orient": "bottom",
+      "scale": "x",
+      "labels": false
+    },
+    {
+      "orient": "left",
+      "scale": "y",
+      "grid": true
+    }
+  ],
+  "marks": [
+    {
+      "type": "rect",
+      "from": {"data": "values"},
+      "encode": {
+        "enter": {
+          "x": {"scale": "x", "field": "date"},
+          "width": {"scale": "x", "band": 1, "offset": -1},
+          "y": {"scale": "y", "field": "y0"},
+          "y2": {"scale": "y", "field": "y1"},
+          "fill": {"scale": "color", "field": "type"}
+        }
+      }
+    }
+  ]
 }
