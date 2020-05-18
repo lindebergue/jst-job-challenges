@@ -30,11 +30,9 @@ export async function fetchTopoJSON(
   options?: { detail: TOPOJSONDetailLevel }
 ): Promise<object> {
   const response = await api.get(`/v2/malhas/${id}`, {
-    headers: {
-      accept: 'application/json'
-    },
     params: {
-      resolucao: options?.detail
+      resolucao: options?.detail,
+      formato: 'application/json'
     }
   })
   return response.data
