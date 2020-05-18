@@ -25,6 +25,7 @@
     "css-loader": "^3.4.2",
     "date-fns": "^2.13.0",
     "debug": "^4.1.1",
+    "dexie": "^3.0.1",
     "eslint": "^6",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-react": "^7.14.3",
@@ -58,6 +59,7 @@
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3",
     "worker-loader": "^2.0.0",
+    "worker-plugin": "^4.0.3",
     "xlsx": "^0.16.0"
   }
 }

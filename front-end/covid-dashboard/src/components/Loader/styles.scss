@@ -1,0 +1,45 @@
+@import '../../lib/variables';
+@import '../../lib/mixins';
+
+.loader {
+  @include transition(transform);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  background: $background-color;
+  transform: translateY(-100%);
+
+  &.visible {
+    transform: none;
+  }
+}
+
+.img {
+  @include animation(spin, $infinite: true, $duration: 1s);
+  width: 6rem;
+  height: auto;
+  fill: #42a834
+}
+
+.message {
+  color: $secondary-text-color;
+  margin-top: 2rem;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(35deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}

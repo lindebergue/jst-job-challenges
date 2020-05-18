@@ -2,8 +2,8 @@
   "compilerOptions": {
     "target": "es5",
     "lib": [
-      "DOM",
-      "ES2015"
+      "ES2015",
+      "WebWorker"
     ],
     "strict": true,
     "strictNullChecks": true,
@@ -20,10 +20,9 @@
   },
   "exclude": [
     "node_modules",
-    "src/**/*.worker.ts"
   ],
   "include": [
     "types.d.ts",
-    "src"
+    "src/**/*.worker.ts"
   ]
 }

@@ -3,6 +3,7 @@ const path = require('path')
 const HtmlPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const WorkerPlugin = require('worker-plugin')
 
 const config = {
   devtool: 'source-map',
@@ -12,10 +13,6 @@ const config = {
   ],
   module: {
     rules: [
-      {
-        test: /\.worker\.ts$/,
-        use: 'worker-loader'
-      },
       {
         test: /\.tsx?$/,
         use: 'ts-loader',
@@ -69,14 +66,16 @@ const config = {
   },
   output: {
     publicPath: '/',
-    filename: '[name].[hash].js'
+    filename: '[name].[hash].js',
+    globalObject: '(typeof self!=\'undefined\'?self:this)'
   },
   plugins: [
     new MiniCssExtractPlugin(),
     new CleanWebpackPlugin(),
     new HtmlPlugin({
       template: path.resolve(__dirname, './src/main.html')
-    })
+    }),
+    new WorkerPlugin()
   ],
   devServer: {
     port: 9000,

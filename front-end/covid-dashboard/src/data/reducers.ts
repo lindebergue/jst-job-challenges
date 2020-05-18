@@ -9,14 +9,14 @@ import {
 } from './types'
 
 function uiReducer(
-  state: UIState = {},
+  state: UIState = {
+  },
   action: Action
 ): UIState {
   switch (action.type) {
     case UIActionType.SELECT_LOCATION:
       return {
-        selectedLocationID: action.payload.locationId,
-        selectedLocationName: action.payload.locationName
+        selectedLocation: action.payload.location
       }
 
     case UIActionType.CLEAR_SELECTED_LOCATION:

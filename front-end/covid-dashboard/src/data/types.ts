@@ -1,6 +1,8 @@
 import { Action as BaseAction } from 'redux'
 import { ThunkAction as BaseThunkAction } from 'redux-thunk'
 
+import { Location } from './database'
+
 export type Action = DataAction | UIAction
 export type ThunkAction = BaseThunkAction<void, State, void, Action>
 
@@ -14,8 +16,7 @@ export interface State {
 //
 
 export interface UIState {
-  selectedLocationID?: number
-  selectedLocationName?: string
+  selectedLocation?: Location
 }
 
 export enum UIActionType {
@@ -29,8 +30,7 @@ export type UIAction =
 
 interface UISelectLocationAction extends BaseAction<UIActionType.SELECT_LOCATION> {
   payload: {
-    locationId: number
-    locationName: string
+    location: Location
   }
 }
 
@@ -55,21 +55,24 @@ interface OverviewData {
     deaths: number
     lethality: number
   }
-  historyValues?: object
+  casesTimeSeries?: {
+    date: Date
+    value: number
+    type: 'confirmed' | 'recovered' | 'dead'
+  }[]
   mapTopoJSONData?: object
-  mapValues?: object
+  mapValues?: {
+    locationId: string
+    locationName: string
+    value: number
+  }[]
   updatedAt?: Date
 }
 
 interface SearchData {
   loading: boolean
   error: boolean
-  results: SearchResult[]
-}
-
-interface SearchResult {
-  locationId: number
-  locationName: string
+  results: Location[]
 }
 
 export enum DataActionType {
@@ -108,6 +111,14 @@ interface DataSearchErrorAction extends BaseAction<DataActionType.SEARCH_ERROR> 
 
 interface DataSearchOkAction extends BaseAction<DataActionType.SEARCH_OK> {
   payload: {
-    results: SearchResult[]
+    results: Location[]
   }
+}
+
+//
+// WebWorker payloads
+//
+
+export interface WorkerResult extends Omit<OverviewData, 'loading' | 'error'> {
+  location: Location
 }
