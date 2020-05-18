@@ -21,7 +21,7 @@ export const Gauge: React.FunctionComponent<GaugeProps> = ({
 }) => {
   return (
     <div className={styles.gauge}>
-      {value ? (
+      {value !== undefined ? (
         <div className={styles.value}>
           {color && (
             <div className={styles.color} style={{ backgroundColor: color }} />
