@@ -6,7 +6,8 @@ import { Footer } from '../components/Footer'
 import { Grid, GridCell } from '../components/Grid'
 import { Gauge } from '../components/Gauge'
 import { useMobileBreakpoint } from '../lib/useMobileBreakpoint'
-import { Chart } from '../components/Chart'
+import { StackedBarChart } from '../components/StackedBarChart'
+import { ChoroplethMap } from '../components/ChoroplethMap'
 import { State } from '../data/types'
 import { recoveredColor, deathsColor, confirmedColor } from '../lib/legendColors'
 
@@ -50,15 +51,16 @@ export const Overview: React.FunctionComponent = () => {
           />
         </GridCell>
         <GridCell row={isMobile ? 3 : '1 / 3'} column={isMobile ? '1 / 7' : '3 / 7'}>
-          <Chart
+          <StackedBarChart
             title='Histórico de casos'
-            spec={{}}
+            values={overview.casesTimeSeries}
           />
         </GridCell>
         <GridCell row={isMobile ? 4 : 3} column='1 / 7'>
-          <Chart
+          <ChoroplethMap
             title='Mapa de incidência'
-            spec={{}}
+            values={overview.mapValues}
+            topoJSON={overview.mapTopoJSONData}
           />
         </GridCell>
       </Grid>
